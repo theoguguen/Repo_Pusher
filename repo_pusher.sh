@@ -53,6 +53,11 @@ function add_files()
 		fi
 		if [ "$file" == "list" ]
 		then
+			if [ "$(git status -s)" == "" ]
+			then
+				echo -e "${PURPLE}Everything is up-to-date, nothing to commit"
+				exit
+			fi
 			git status -s
 			continue
 		fi
